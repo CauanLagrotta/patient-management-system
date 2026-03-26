@@ -2,6 +2,7 @@ package com.cauanlagrotta.patientservice.service;
 
 import com.cauanlagrotta.patientservice.dto.PatientRequestDTO;
 import com.cauanlagrotta.patientservice.dto.PatientResponseDTO;
+import com.cauanlagrotta.patientservice.exception.EmailAlreadyExistsException;
 import com.cauanlagrotta.patientservice.mapper.PatientMapper;
 import com.cauanlagrotta.patientservice.model.Patient;
 import com.cauanlagrotta.patientservice.repository.PatientRepository;
@@ -24,6 +25,10 @@ public class PatientService {
   }
 
   public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO){
+    if(patientRepository.existsByEmail(patientRequestDTO.getEmail())){
+      throw new EmailAlreadyExistsException("Email already exists");
+    }
+
     Patient newPatient = patientRepository.save(PatientMapper.toModel(patientRequestDTO));
     return PatientMapper.toDTO(newPatient);
   }
