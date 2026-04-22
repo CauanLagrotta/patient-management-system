@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89075448-be61-4b83-a71b-315485294e68" name="Changes" comment="feat: create Dockerfile configurations">
-      <change afterPath="$PROJECT_DIR$/auth-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/com/cauanlagrotta/authservice/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/resources/data.sql" afterDir="false" />
+    <list default="true" id="89075448-be61-4b83-a71b-315485294e68" name="Changes" comment="feat: integrate auth service to api gateway">
+      <change afterPath="$PROJECT_DIR$/integration-tests/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integration-tests/src/test/java/AuthIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="99" />
+    <option name="cachedIndexableFilesCount" value="110" />
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -37,10 +37,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTTP Request" />
-        <option value="Exception" />
         <option value="Interface" />
         <option value="Dockerfile" />
         <option value="package-info" />
+        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -71,6 +71,9 @@
     <commands />
     <urls />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2,
   &quot;fromUser&quot;: false
@@ -93,8 +96,10 @@
     "Docker.kafka.executor": "Run",
     "Docker.patient-service-db.executor": "Run",
     "Docker.patient-service.executor": "Run",
+    "Maven.analytics-service [clean,install].executor": "Run",
     "Maven.analytics-service [clean].executor": "Run",
     "Maven.analytics-service [compile].executor": "Run",
+    "Maven.api-gateway [compile].executor": "Run",
     "Maven.billing-service [clean,install].executor": "Run",
     "Maven.billing-service [compile].executor": "Run",
     "Maven.patient-service [clean].executor": "Run",
@@ -115,7 +120,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cauan/projects/patient-management-system/auth-service",
+    "last_opened_file_path": "/home/cauan/projects/patient-management-system",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -155,12 +160,21 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.auth-service">
+  <component name="RunManager" selected="JUnit.AuthIntegrationTest">
     <configuration type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
+    </configuration>
+    <configuration name="AuthIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="integration-tests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AuthIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="AnalyticsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="analytics-service" />
@@ -230,6 +244,14 @@
         <settings>
           <option name="imageTag" value="api-gateway:latest" />
           <option name="containerName" value="api-gateway" />
+          <option name="envVars">
+            <list>
+              <DockerEnvVarImpl>
+                <option name="name" value="AUTH_SERVICE_URL" />
+                <option name="value" value="http://auth-service:4005" />
+              </DockerEnvVarImpl>
+            </list>
+          </option>
           <option name="portBindings">
             <list>
               <DockerPortBindingImpl>
@@ -313,14 +335,10 @@
                 <option name="name" value="SPRING_SQL_INIT_MODE" />
                 <option name="value" value="always" />
               </DockerEnvVarImpl>
-            </list>
-          </option>
-          <option name="portBindings">
-            <list>
-              <DockerPortBindingImpl>
-                <option name="containerPort" value="4005" />
-                <option name="hostPort" value="4005" />
-              </DockerPortBindingImpl>
+              <DockerEnvVarImpl>
+                <option name="name" value="JWT_SECRET" />
+                <option name="value" value="UpOGeod13oU/phxHBCRvMkLcKgQl+dWTwIKnuKKiQJA=" />
+              </DockerEnvVarImpl>
             </list>
           </option>
           <option name="commandLineOptions" value="--network internal" />
@@ -500,20 +518,26 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Docker.analytics-service" />
       <item itemvalue="Docker.api-gateway" />
-      <item itemvalue="Docker.billing-service" />
-      <item itemvalue="Docker.patient-service-db" />
       <item itemvalue="Docker.auth-service-db" />
       <item itemvalue="Docker.auth-service" />
-      <item itemvalue="Docker.patient-service" />
-      <item itemvalue="Docker.analytics-service" />
+      <item itemvalue="Docker.billing-service" />
       <item itemvalue="Docker.kafka" />
-      <item itemvalue="Spring Boot.AuthServiceApplication" />
+      <item itemvalue="Docker.patient-service-db" />
+      <item itemvalue="Docker.patient-service" />
+      <item itemvalue="JUnit.AuthIntegrationTest" />
       <item itemvalue="Spring Boot.AnalyticsServiceApplication" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
+      <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.BillingServiceApplication" />
       <item itemvalue="Spring Boot.PatientServiceApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AuthIntegrationTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -569,7 +593,14 @@
       <workItem from="1775478108616" duration="7573000" />
       <workItem from="1775653063743" duration="115000" />
       <workItem from="1775823624175" duration="1387000" />
-      <workItem from="1775836499359" duration="4681000" />
+      <workItem from="1775836499359" duration="7046000" />
+      <workItem from="1775957855289" duration="4000" />
+      <workItem from="1776122769963" duration="5631000" />
+      <workItem from="1776209750018" duration="4016000" />
+      <workItem from="1776728386351" duration="4758000" />
+      <workItem from="1776791104829" duration="4000" />
+      <workItem from="1776791304510" duration="19000" />
+      <workItem from="1776813024932" duration="3727000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add database configs">
       <option name="closed" value="true" />
@@ -667,7 +698,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775517095950</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat(auth): implement auth-service with user model, security and Docker setup&#10;&#10;- Add User entity with UUID primary key and role-based fields&#10;- Configure Spring Security with JWT (jjwt 0.12.6)&#10;- Add multi-stage Dockerfile exposing port 4005&#10;- Create users table schema with seed data for admin user&#10;- Setup JPA with PostgreSQL and H2 support">
+      <option name="closed" value="true" />
+      <created>1775868695973</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775868695974</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: integrate auth service to api gateway">
+      <option name="closed" value="true" />
+      <created>1776212425989</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1776212425989</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +744,9 @@
     <MESSAGE value="feat: create kafka consumer" />
     <MESSAGE value="feat: add api-gateway module" />
     <MESSAGE value="feat: create Dockerfile configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: create Dockerfile configurations" />
+    <MESSAGE value="feat(auth): implement auth-service with user model, security and Docker setup&#10;&#10;- Add User entity with UUID primary key and role-based fields&#10;- Configure Spring Security with JWT (jjwt 0.12.6)&#10;- Add multi-stage Dockerfile exposing port 4005&#10;- Create users table schema with seed data for admin user&#10;- Setup JPA with PostgreSQL and H2 support" />
+    <MESSAGE value="feat: integrate auth service to api gateway" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: integrate auth service to api gateway" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
