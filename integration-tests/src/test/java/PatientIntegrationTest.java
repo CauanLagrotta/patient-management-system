@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class AuthIntegrationTest {
+public class PatientIntegrationTest {
   @BeforeAll
   static void setup(){
     RestAssured.baseURI = "http://localhost:4004";
@@ -21,7 +21,7 @@ public class AuthIntegrationTest {
         }
         """;
 
-    Response response = given()
+    String token = given()
         .contentType("application/json")
         .body(loginPayload)
         .when()
@@ -30,26 +30,15 @@ public class AuthIntegrationTest {
         .statusCode(200)
         .body("token", notNullValue())
         .extract()
-        .response();
-
-    System.out.println("Generated token: " + response.jsonPath().getString("token"));
-  }
-
-  @Test
-  public void shouldReturnUnauthorizedWithInvalidLogin(){
-    String loginPayload = """
-        {
-          "email": "invalid_user@test.com",
-          "password": "wrongpassword123"
-        }
-        """;
+        .jsonPath()
+        .get("token");
 
     given()
-        .contentType("application/json")
-        .body(loginPayload)
+        .header("Authorization", "Bearer " + token)
         .when()
-        .post("/auth/login")
+        .get("/api/patients")
         .then()
-        .statusCode(401);
+        .statusCode(200)
+        .body("patients", notNullValue());
   }
 }
