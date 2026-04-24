@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89075448-be61-4b83-a71b-315485294e68" name="Changes" comment="feat: integrate auth service to api gateway">
-      <change afterPath="$PROJECT_DIR$/integration-tests/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integration-tests/src/test/java/AuthIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/com/cauanlagrotta/stack/LocalStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integration-tests/target/test-classes/AuthIntegrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/integration-tests/target/test-classes/AuthIntegrationTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="110" />
+    <option name="cachedIndexableFilesCount" value="112" />
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -72,7 +74,7 @@
     <urls />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2,
@@ -88,6 +90,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.LocalStack.executor": "Run",
     "Docker.analytics-service.executor": "Run",
     "Docker.api-gateway.executor": "Run",
     "Docker.auth-service-db.executor": "Run",
@@ -96,6 +99,9 @@
     "Docker.kafka.executor": "Run",
     "Docker.patient-service-db.executor": "Run",
     "Docker.patient-service.executor": "Run",
+    "JUnit.AuthIntegrationTest.executor": "Run",
+    "JUnit.PatientIntegrationTest.executor": "Run",
+    "JUnit.PatientIntegrationTest.shouldReturnOkWithValidToken.executor": "Run",
     "Maven.analytics-service [clean,install].executor": "Run",
     "Maven.analytics-service [clean].executor": "Run",
     "Maven.analytics-service [compile].executor": "Run",
@@ -120,7 +126,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cauan/projects/patient-management-system",
+    "last_opened_file_path": "/home/cauan/projects/patient-management-system/infrastructure",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -160,18 +166,51 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AuthIntegrationTest">
+  <component name="RunManager" selected="Application.LocalStack">
     <configuration type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="LocalStack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cauanlagrotta.stack.LocalStack" />
+      <module name="infrastructure" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/infrastructure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cauanlagrotta.stack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="integration-tests" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AuthIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PatientIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="integration-tests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PatientIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PatientIntegrationTest.shouldReturnOkWithValidToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="integration-tests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PatientIntegrationTest" />
+      <option name="METHOD_NAME" value="shouldReturnOkWithValidToken" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -518,6 +557,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.LocalStack" />
       <item itemvalue="Docker.analytics-service" />
       <item itemvalue="Docker.api-gateway" />
       <item itemvalue="Docker.auth-service-db" />
@@ -526,6 +566,8 @@
       <item itemvalue="Docker.kafka" />
       <item itemvalue="Docker.patient-service-db" />
       <item itemvalue="Docker.patient-service" />
+      <item itemvalue="JUnit.PatientIntegrationTest" />
+      <item itemvalue="JUnit.PatientIntegrationTest.shouldReturnOkWithValidToken" />
       <item itemvalue="JUnit.AuthIntegrationTest" />
       <item itemvalue="Spring Boot.AnalyticsServiceApplication" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
@@ -535,6 +577,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LocalStack" />
+        <item itemvalue="JUnit.PatientIntegrationTest.shouldReturnOkWithValidToken" />
+        <item itemvalue="JUnit.PatientIntegrationTest" />
         <item itemvalue="JUnit.AuthIntegrationTest" />
       </list>
     </recent_temporary>
@@ -600,7 +645,11 @@
       <workItem from="1776728386351" duration="4758000" />
       <workItem from="1776791104829" duration="4000" />
       <workItem from="1776791304510" duration="19000" />
-      <workItem from="1776813024932" duration="3727000" />
+      <workItem from="1776813024932" duration="4420000" />
+      <workItem from="1776901625116" duration="3669000" />
+      <workItem from="1776944058857" duration="751000" />
+      <workItem from="1776944818521" duration="4006000" />
+      <workItem from="1776988367452" duration="4701000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add database configs">
       <option name="closed" value="true" />
