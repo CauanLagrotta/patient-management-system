@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89075448-be61-4b83-a71b-315485294e68" name="Changes" comment="feat: integrate auth service to api gateway">
+    <list default="true" id="89075448-be61-4b83-a71b-315485294e68" name="Changes" comment="feat: add db healthcheck">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/cdk.out/localstack.template.json" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/cdk.out/localstack.template.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/cdk.out/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/cdk.out/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/cdk.out/tree.json" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/cdk.out/tree.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/com/cauanlagrotta/stack/LocalStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/com/cauanlagrotta/stack/LocalStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/target/classes/com/cauanlagrotta/stack/LocalStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/target/classes/com/cauanlagrotta/stack/LocalStack.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -647,7 +643,7 @@
       <workItem from="1776944058857" duration="751000" />
       <workItem from="1776944818521" duration="4006000" />
       <workItem from="1776988367452" duration="5152000" />
-      <workItem from="1777075468609" duration="1604000" />
+      <workItem from="1777075468609" duration="2272000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add database configs">
       <option name="closed" value="true" />
@@ -761,7 +757,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776212425989</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: add db healthcheck">
+      <option name="closed" value="true" />
+      <created>1777077522341</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1777077522341</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -793,7 +797,8 @@
     <MESSAGE value="feat: create Dockerfile configurations" />
     <MESSAGE value="feat(auth): implement auth-service with user model, security and Docker setup&#10;&#10;- Add User entity with UUID primary key and role-based fields&#10;- Configure Spring Security with JWT (jjwt 0.12.6)&#10;- Add multi-stage Dockerfile exposing port 4005&#10;- Create users table schema with seed data for admin user&#10;- Setup JPA with PostgreSQL and H2 support" />
     <MESSAGE value="feat: integrate auth service to api gateway" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: integrate auth service to api gateway" />
+    <MESSAGE value="feat: add db healthcheck" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add db healthcheck" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
